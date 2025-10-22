@@ -68,7 +68,7 @@
             background-size: cover; 
             background-repeat: no-repeat;
             background-position: center center; 
-            opacity: 0.1; /* Kept it subtle */
+            opacity: 0.4; /* Kept it subtle */
             filter: grayscale(100%);
             /* Added a subtle zoom effect on load */
             animation: zoomIn 30s ease-out infinite alternate;
@@ -88,11 +88,12 @@
             flex: 0 0 100%;
             width: 100%;
             position: relative;
+            background-color: #f3f4f6; /* bg-gray-100 for letterbox */
         }
         .slider-slide img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain; /* FIX: Was 'cover', now 'contain' */
             aspect-ratio: 16 / 9;
         }
         .slider-dot {
@@ -102,6 +103,23 @@
             background-color: #FFD700; /* brand-gold */
             transform: scale(1.25);
         }
+
+        /* Style for fundraiser card images */
+        .fundraiser-img-container {
+            background-color: #f3f4f6; /* bg-gray-100 for letterbox */
+            border-radius: 0.5rem; /* rounded-lg */
+            margin-bottom: 1.5rem; /* mb-6 */
+            width: 100%;
+            height: 14rem; /* h-56 */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); /* shadow-md */
+            overflow: hidden; /* To keep image inside */
+        }
+        .fundraiser-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* FIX: Was 'cover', now 'contain' */
+        }
+
 
         /* NEW SCROLL ANIMATION STYLES */
         .animate-on-scroll {
@@ -247,10 +265,14 @@
                         <div class="absolute top-0 right-0 bg-brand-gold text-brand-blue font-bold px-4 py-1 rounded-bl-lg text-sm uppercase tracking-wider">
                             Most Popular!
                         </div>
-                        <img src="images/egg-rolls.jpg" 
-                             alt="Vegetarian Egg Rolls" 
-                             onerror="this.src='https://placehold.co/600x400/FFD700/000000?text=Delicious+Veggie+Egg+Rolls';"
-                             class="rounded-lg mb-6 w-full h-56 object-cover shadow-md">
+                        
+                        <!-- FIX: Image Container -->
+                        <div class="fundraiser-img-container">
+                            <img src="images/egg-rolls.jpg" 
+                                 alt="Vegetarian Egg Rolls" 
+                                 onerror="this.src='https://placehold.co/600x400/FFD700/000000?text=Delicious+Veggie+Egg+Rolls';">
+                        </div>
+                        
                         <h3 class="text-3xl font-bold text-gray-900 mb-3">Mom's Vegetarian Egg Rolls</h3>
                         <p class="text-gray-700 mb-5 text-lg">Crispy, delicious, and packed with flavor. A family recipe!</p>
                         <p class="text-4xl font-extrabold text-brand-blue mb-6">$20 / Dozen</p>
@@ -262,10 +284,13 @@
                     <!-- Donation Option -->
                     <div class="bg-gray-800 text-white rounded-xl shadow-2xl p-8 max-w-md w-full flex flex-col justify-between animate-on-scroll" style="transition-delay: 450ms;">
                         <div>
-                            <img src="images/thank-you.jpg" 
-                                 alt="Gymnasts thanking" 
-                                 onerror="this.src='https://placehold.co/600x400/E0E0E0/333333?text=Thank+You+for+Your+Support';"
-                                 class="rounded-lg mb-6 w-full h-56 object-cover shadow-md opacity-90">
+                            <!-- FIX: Image Container -->
+                            <div class="fundraiser-img-container" style="background-color: #374151;"> <!-- Darker bg for this card -->
+                                <img src="images/filipino-american.jpg" 
+                                     alt="Gymnasts thanking" 
+                                     onerror="this.src='https://placehold.co/600x400/E0E0E0/333333?text=Thank+You+for+Your+Support';">
+                            </div>
+                            
                             <h3 class="text-3xl font-bold mb-3">Make a Direct Donation</h3>
                             <p class="text-gray-300 mb-5 text-lg">Not hungry? You can still support the girls with a direct donation. Every little bit helps!</p>
                             <p class="text-4xl font-extrabold text-white mb-6">Any Amount</p>
@@ -287,7 +312,7 @@
                     We're so excited for you to try our egg rolls! To place an order, please send us an email. We'll get back to you with payment details and arrange a pickup/delivery time.
                 </p>
                 <!-- UPDATE THIS EMAIL -->
-                <a href="mailto:your-email@example.com?subject=Egg%20Roll%20Order%20for%20Gymnastics%20Fundraiser&body=Hi%20Ravago%20Family%2C%0A%0AI%27d%20like%20to%20place%20an%20order%20for%3A%0A%0A-%20(Number)%20dozen%20vegetarian%20egg%20rolls%0A%0APlease%20let%20me%20know%20the%20best%20way%20to%20pay%20and%20arrange%20pickup.%0A%0AThanks!%0A(Your%20Name)" 
+                <a href="mailto:your-email@example.com?subject=Egg%20Roll%20Order%20for%20Gymnastics%20Fundraiser&body=Hi%20Ravago%20Family%2C%0A%0AI%27d%20like%20to%20place%20an%20order%20for%3A%0A%0A-%20(Number)%20dozen%20vegetarian%2g%20rolls%0A%0APlease%20let%20me%20know%20the%20best%20way%20to%20pay%20and%20arrange%20pickup.%0A%0AThanks!%0A(Your%20Name)" 
                    class="bg-brand-gold text-brand-blue px-12 py-5 rounded-full text-xl font-bold shadow-2xl transition-all duration-300 transform hover:scale-110 inline-flex items-center gap-3 animate-pulseGold animate-on-scroll" 
                    style="transition-delay: 300ms;">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
@@ -310,7 +335,7 @@
             <h3 class="font-heading text-4xl font-bold text-white mb-4">Salamat Po!</h3>
             <p class="text-lg text-gray-300 mb-6 max-w-2xl mx-auto">
                 Thank you so much for supporting Sarah and Elizabeth. Your generosity helps turn their big dreams into reality.
-            </p>
+            </WELCOME>
             <!-- Social Icons (Example) -->
             <div class="flex justify-center space-x-6 mb-8">
                 <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">
@@ -332,7 +357,10 @@
             const galleryFiles = [
                 'gallery/01.jpg', 'gallery/02.jpg', 'gallery/03.jpg',
                 'gallery/04.jpg', 'gallery/05.jpg', 'gallery/06.jpg',
-                'gallery/07.jpg', 'gallery/08.jpg'
+                'gallery/07.jpg', 'gallery/08.jpg',
+                'gallery/09.jpg', 'gallery/10.jpg', 'gallery/11.jpg',
+                'gallery/12.jpg', 'gallery/13.jpg', 'gallery/14.jpg',
+                'gallery/15.jpg', 'gallery/16.jpg'
                 // Add more images to your 'gallery' folder and list them here
             ];
             const slideInterval = 5000; // 5 seconds
@@ -351,7 +379,7 @@
                     // Create slide
                     const slide = document.createElement('div');
                     slide.className = 'slider-slide';
-                    slide.innerHTML = `<img src="${file}" alt="Gallery image ${index + 1}" class="rounded-lg" onerror="this.src='https://placehold.co/1280x720/E0E0E0/333333?text=Gallery+Image';">`;
+                    slide.innerHTML = `<img src="${file}" alt="Gallery image ${index + 1}" onerror="this.src='https://placehold.co/1280x720/E0E0E0/333333?text=Gallery+Image';">`;
                     track.appendChild(slide);
 
                     // Create dot
